@@ -1,0 +1,25 @@
+lab1@lab1:~$ sudo su
+[sudo] password for lab1: 
+root@lab1:/home/lab1# git clone https://github.com/daos-stack/daos.git
+Cloning into 'daos'...
+remote: Enumerating objects: 199021, done.
+remote: Counting objects: 100% (2516/2516), done.
+remote: Compressing objects: 100% (1296/1296), done.
+remote: Total 199021 (delta 1777), reused 1732 (delta 1201), pack-reused 196505
+Receiving objects: 100% (199021/199021), 143.73 MiB | 18.61 MiB/s, done.
+Resolving deltas: 100% (161591/161591), done.
+root@lab1:/home/lab1# cd daos
+root@lab1:/home/lab1/daos# cd src
+root@lab1:/home/lab1/daos/src# cd client
+root@lab1:/home/lab1/daos/src/client# python3
+Python 3.10.12 (main, Jun 11 2023, 05:26:28) [GCC 11.4.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pydaos
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/lab1/daos/src/client/pydaos/__init__.py", line 12, in <module>
+    from . import pydaos_shim  # pylint: disable=relative-beyond-top-level,import-self
+ImportError: cannot import name 'pydaos_shim' from partially initialized module 'pydaos' (most likely due to a circular import) (/home/lab1/daos/src/client/pydaos/__init__.py)
+>>> 
+
+

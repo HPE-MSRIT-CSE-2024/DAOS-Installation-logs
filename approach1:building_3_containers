@@ -1,0 +1,30 @@
+root@lab1:/home/lab1# find ./ -name daos_server.yaml
+root@lab1:/home/lab1# find ./ -name daos_server.yml
+./daos/utils/config/daos_server.yml
+root@lab1:/home/lab1# vi ./daos/utils/config/daos_server.yml
+root@lab1:/home/lab1# docker ps
+CONTAINER ID   IMAGE                    COMMAND        CREATED             STATUS             PORTS     NAMES
+68ea8db67075   daos-client:rocky8.6     "/sbin/init"   About an hour ago   Up About an hour             daos-client
+547e8e3d12f5   daos-admin:rocky8.6      "/sbin/init"   About an hour ago   Up About an hour             daos-admin
+c7b7242ce237   daos-server:rocky8.6     "/sbin/init"   About an hour ago   Up About an hour             daos-server
+bf87b4861861   linzhi731/daos-wrapper   "/bin/bash"    2 hours ago         Up 2 hours                   nostalgic_ptolemy
+root@lab1:/home/lab1# docker restart c7b7242ce237
+c7b7242ce237
+root@lab1:/home/lab1# docker exec daos-admin dmg -i storage format
+
+ERROR: Errors:
+  Hosts       Error                                                  
+  -----       -----                                                  
+  daos-server the server at daos-server:10001 refused the connection 
+
+ERROR: dmg: 1 host had errors
+root@lab1:/home/lab1# docker exec daos-client dmg -i storage format
+
+ERROR: Errors:
+  Hosts     Error                                                
+  -----     -----                                                
+  localhost the server at localhost:10001 refused the connection 
+
+ERROR: dmg: 1 host had errors
+root@lab1:/home/lab1# 
+
